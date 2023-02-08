@@ -1,3 +1,4 @@
+
 import torch
 import pandas as pd
 from torch.utils.data import Dataset, DataLoader
@@ -12,7 +13,7 @@ from collections import Counter
 from pathlib import Path
 
 curr_path = Path(os.getcwd())
-NLMCXR_path = os.path.join(str(curr_path.parent), 'NLMCXR_data')
+NLMCXR_path = os.path.join('/content/skoltech_image_cap/', 'NLMCXR_data')
 
 import torch
 import pandas as pd
@@ -36,7 +37,8 @@ from glob import glob
 from PIL import Image
 import pickle
 import pandas as pd
-
+import nltk
+nltk.download('punkt')
 
 class Vocabulary(object):
     """Simple vocabulary wrapper."""
@@ -88,7 +90,7 @@ def build_vocab(captions, threshold):
         vocab.add_word(word)
     return vocab
 
-asd = pd.read_pickle(f'{NLMCXR_path}/all_reports_df.pkl')
+asd = pd.read_pickle('/content/skoltech_image_cap/NLMCXR_data/all_reports_df.pkl')
 # vocab = build_vocab(asd.processed_captions.values, 8)
 asd = asd[ asd['processed_findings'].notnull() ]
 vocab = build_vocab(asd.processed_findings.values, 8)
