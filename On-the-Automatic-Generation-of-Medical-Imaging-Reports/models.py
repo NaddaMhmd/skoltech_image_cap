@@ -40,19 +40,19 @@ class EncoderCNN(nn.Module):
         self.enc_dim = 1024
         
         inception = DenseNet121(8).cuda() # inception_v3_base(pretrained=True)
-        state_dict = torch.load("/raid/data/cxr14-2/DenseNet121_aug4_pretrain_WeightBelow1_1_0.829766922537.pkl")
-        new_state_dict = OrderedDict()
+#         state_dict = torch.load("/raid/data/cxr14-2/DenseNet121_aug4_pretrain_WeightBelow1_1_0.829766922537.pkl")
+#         new_state_dict = OrderedDict()
 
-        for s, v in state_dict.items():
+#         for s, v in state_dict.items():
 
-            if 'module.' in s:
-                s = s.replace('module.', '')
+#             if 'module.' in s:
+#                 s = s.replace('module.', '')
 
-            if s not in good_layers:
-                s = '.'.join(s.split('.')[:-2]) + '.'.join(s.split('.')[-2:])
+#             if s not in good_layers:
+#                 s = '.'.join(s.split('.')[:-2]) + '.'.join(s.split('.')[-2:])
 
-            new_state_dict[s] = v
-        inception.load_state_dict(new_state_dict)
+#             new_state_dict[s] = v
+#         inception.load_state_dict(new_state_dict)
 
         self.dense_m = inception._modules['densenet121']
 
