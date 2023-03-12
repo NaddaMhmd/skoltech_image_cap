@@ -1,5 +1,6 @@
-from cococaption.pycocotools.coco import COCO
-from cococaption.pycocoevalcap.eval import COCOEvalCap
+from skoltech_image_cap.On_the_Automatic_Generation_of_Medical_Imaging_Reports.cococaption.pycocotools.coco import COCO
+from skoltech_image_cap.On_the_Automatic_Generation_of_Medical_Imaging_Reports.cococaption.pycocoevalcap.eval import COCOEvalCap
+
 import json
 
 def evalscores(hypotheses, references):
