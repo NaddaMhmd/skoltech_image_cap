@@ -1,6 +1,6 @@
 import os
 os.environ["CUDA_DEVICE_ORDER"]="PCI_BUS_ID"
-os.environ["CUDA_VISIBLE_DEVICES"]="2"
+os.environ["CUDA_VISIBLE_DEVICES"]="0"
 
 import torch
 import argparse
@@ -27,9 +27,9 @@ class Vocabulary(object):
     def __len__(self):
         return len(self.word2idx)
 
-from models import EncoderCNN, SentenceLSTM, WordLSTM
-from dataloader import get_loader
-from score import evalscores
+from skoltech_image_cap.On_the_Automatic_Generation_of_Medical_Imaging_Reports.models import EncoderCNN, SentenceLSTM, WordLSTM
+from skoltech_image_cap.On_the_Automatic_Generation_of_Medical_Imaging_Reports.dataloader import get_loader
+from skoltech_image_cap.On_the_Automatic_Generation_of_Medical_Imaging_Reports.score import evalscores
 from torchvision import transforms
 from torch import nn
 import numpy as np
