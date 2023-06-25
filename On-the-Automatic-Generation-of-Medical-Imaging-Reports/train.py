@@ -121,29 +121,29 @@ def script(args):
 
                 
                        # Save the model checkpoints
-            if (i+1) % args.save_step == 0:
-                torch.save(encoderCNN.state_dict(), os.path.join(
-                    "/content", 'encoderCNN_trial-{}-{}.ckpt'.format(epoch+1, i+1)))
-                torch.save(sentLSTM.state_dict(), os.path.join(
-                    "/content", 'sentLSTM_trial-{}-{}.ckpt'.format(epoch+1, i+1)))
-                torch.save(wordLSTM.state_dict(), os.path.join(
-                    "/content", 'wordLSTM_trial-{}-{}.ckpt'.format(epoch+1, i+1)))
-            # Save the model checkpoints
-            if (i+1) % args.save_step == 0:
-                torch.save(encoderCNN.state_dict(), os.path.join(
-                    '/kaggle/working', 'encoderCNN_trial-{}-{}.pth'.format(epoch+1, i+1)))
-                torch.save(sentLSTM.state_dict(), os.path.join(
-                    '/kaggle/working', 'sentLSTM_trial-{}-{}.pth'.format(epoch+1, i+1)))
-                torch.save(wordLSTM.state_dict(), os.path.join(
-                    '/kaggle/working', 'wordLSTM_trial-{}-{}.pth'.format(epoch+1, i+1)))   
+            # if (i+1) % args.save_step == 0:
+            #     torch.save(encoderCNN.state_dict(), os.path.join(
+            #         "/content", 'encoderCNN_trial-{}-{}.ckpt'.format(epoch+1, i+1)))
+            #     torch.save(sentLSTM.state_dict(), os.path.join(
+            #         "/content", 'sentLSTM_trial-{}-{}.ckpt'.format(epoch+1, i+1)))
+            #     torch.save(wordLSTM.state_dict(), os.path.join(
+            #         "/content", 'wordLSTM_trial-{}-{}.ckpt'.format(epoch+1, i+1)))
+            # # Save the model checkpoints
+            # if (i+1) % args.save_step == 0:
+            #     torch.save(encoderCNN.state_dict(), os.path.join(
+            #         '/kaggle/working', 'encoderCNN_trial-{}-{}.pth'.format(epoch+1, i+1)))
+            #     torch.save(sentLSTM.state_dict(), os.path.join(
+            #         '/kaggle/working', 'sentLSTM_trial-{}-{}.pth'.format(epoch+1, i+1)))
+            #     torch.save(wordLSTM.state_dict(), os.path.join(
+            #         '/kaggle/working', 'wordLSTM_trial-{}-{}.pth'.format(epoch+1, i+1)))   
         
         evaluate(args, val_loader, encoderCNN, sentLSTM, wordLSTM, vocab)
     
     
     
-    torch.save(sentLSTM.state_dict(), '/content/weights_sent_pth.pth')
-    torch.save(encoderCNN.state_dict(),'/content/weights_encCNN_pth.pth')
-    torch.save(wordLSTM.state_dict(), '/content/weights_word_pth.pth')
+    torch.save(sentLSTM.state_dict(), '/kaggle/working/weights_sent_pth.pth')
+    torch.save(encoderCNN.state_dict(),'/kaggle/working/weights_encCNN_pth.pth')
+    torch.save(wordLSTM.state_dict(), '/kaggle/working/weights_word_pth.pth')
     
     return args, val_loader, encoderCNN, sentLSTM, wordLSTM, vocab
 
