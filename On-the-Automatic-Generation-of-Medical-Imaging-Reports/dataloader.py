@@ -90,7 +90,7 @@ def build_vocab(captions, threshold):
         vocab.add_word(word)
     return vocab
 
-asd = pd.read_pickle('/content/skoltech_image_cap/NLMCXR_data/all_reports_df.pkl')
+asd = pd.read_pickle('/kaggle/working/skoltech_image_cap/NLMCXR_data/all_reports_df.pkl')
 # vocab = build_vocab(asd.processed_captions.values, 8)
 asd = asd[ asd['processed_findings'].notnull() ]
 vocab = build_vocab(asd.processed_findings.values, 8)
