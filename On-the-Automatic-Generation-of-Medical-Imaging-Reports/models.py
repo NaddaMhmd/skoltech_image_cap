@@ -40,7 +40,7 @@ class EncoderCNN(nn.Module):
         self.enc_dim = 1024
         
         inception = DenseNet121(8).cuda() # inception_v3_base(pretrained=True)
-	torch.save(inception.state_dict(), os.path.join('/kaggle/working', 'inception-{}-{}.pth'.format(1+1, 1+1)))  
+	torch.save(inception.state_dict(), os.path.join('/kaggle/working', 'inception-{}-{}.pth'.format(0+1,0+1)))  
 #         state_dict = torch.load("/raid/data/cxr14-2/DenseNet121_aug4_pretrain_WeightBelow1_1_0.829766922537.pkl")
 #         new_state_dict = OrderedDict()
 
