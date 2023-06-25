@@ -13,7 +13,7 @@ from collections import Counter
 from pathlib import Path
 
 curr_path = Path(os.getcwd())
-NLMCXR_path = os.path.join('/content/skoltech_image_cap/', 'NLMCXR_data')
+NLMCXR_path = os.path.join('/kaggle/working/skoltech_image_cap/', 'NLMCXR_data')
 
 import torch
 import pandas as pd
