@@ -35,6 +35,11 @@ from torch import nn
 import numpy as np
 from nltk.translate.bleu_score import corpus_bleu
 
+def checkpoint(model, filename):
+    torch.save(model.state_dict(), filename)
+    
+def resume(model, filename):
+    model.load_state_dict(torch.load(filename))
 
 def script(args):
     transform = transforms.Compose([ 
@@ -81,6 +86,9 @@ def script(args):
     evaluate(args, val_loader, encoderCNN, sentLSTM, wordLSTM, vocab)
 
     for epoch in range(args.num_epochs):
+        # resume(encoderCNN, "/content/encoderCNN-1.pth")
+        # resume(sentLSTM, "/content/sentLSTM-1.pth")
+        # resume(wordLSTM, "/content/wordLSTM-1.pth")
         encoderCNN.train()
         sentLSTM.train()
         wordLSTM.train()
@@ -138,7 +146,9 @@ def script(args):
             #         '/kaggle/working', 'wordLSTM_trial-{}-{}.pth'.format(epoch+1, i+1)))   
         
         evaluate(args, val_loader, encoderCNN, sentLSTM, wordLSTM, vocab)
-    
+        checkpoint(encoderCNN, f"encoderCNN-{epoch}.pth")
+        checkpoint(sentLSTM, f"sentLSTM-{epoch}.pth")
+        checkpoint(wordLSTM, f"wordLSTM-{epoch}.pth")
     
     
     torch.save(sentLSTM.state_dict(), '/kaggle/working/weights_sent_pth.pth')
