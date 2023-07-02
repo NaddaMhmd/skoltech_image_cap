@@ -151,9 +151,9 @@ def script(args):
         checkpoint(wordLSTM, f"wordLSTM-{epoch}.pth")
     
     
-    torch.save(sentLSTM.state_dict(), '/kaggle/working/weights_sent_pth.pth')
-    torch.save(encoderCNN.state_dict(),'/kaggle/working/weights_encCNN_pth.pth')
-    torch.save(wordLSTM.state_dict(), '/kaggle/working/weights_word_pth.pth')
+    # torch.save(sentLSTM.state_dict(), '/kaggle/working/weights_sent_pth.pth')
+    # torch.save(encoderCNN.state_dict(),'/kaggle/working/weights_encCNN_pth.pth')
+    # torch.save(wordLSTM.state_dict(), '/kaggle/working/weights_word_pth.pth')
     
     return args, val_loader, encoderCNN, sentLSTM, wordLSTM, vocab
 
